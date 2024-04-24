@@ -1,44 +1,67 @@
-import copy
-
-orig_dict = {'key1': 'value1', 'key2': {'key3': 'value3'}}
-
-# Deep copy
-deep_dict = copy.deepcopy(orig_dict)
-
-orig_dict['key2']['key3'] = 'new value'
-
-print('Original:', id(orig_dict),orig_dict)
-print('Deep Copy:', id(deep_dict),deep_dict)
+from collections import namedtuple
 
 
-# Original list
-orig_list = [1, 2, [3, 4]]
+Student = namedtuple('Student', ['name', 'age', 'student_id'])
 
-# Shallow copy
-shallow_list = copy.copy(orig_list)
+S = Student('Nandini', '19', '2541997')
+f = Student('Jack','23','6414112')
+g = Student('Anna','20','121231233')
 
-orig_list[2][0] = 'a'
-
-print('Original:', id(orig_list),orig_list)
-print('Shallow Copy:',id( shallow_list),shallow_list)
-
+#Student yoshi va ismlari
+print("The Student age using index is : ", end="")
+print(S[1])
+print("The Student name using keyname is : ", end="")
+print(S.name)
+print("The Student id using index is : ", end="")
+print(g[1])
+print("The Student age using keyname is : ", end="")
+print(g.name)
+print("The Student name using index is : ", end="")
+print(f[1])
+print("The Student id using keyname is : ", end="")
+print(f.name)
 
 
 
-# List
-my_list = [1, 2, 3]
-my_list[0] = 'a'  #listning keyingi korinishi  ['a', 2, 3]
-print(my_list)
+import collections
 
-# Dictionary
-my_dict = {'name': 'John', 'age': 30}
-my_dict['age'] = 31  # listning ozgargandan keyingi  korinishi  {'name': 'John', 'age': 31}
-print(my_dict)
+Student = collections.namedtuple('Student',['name', 'age', 'student_id'])
 
-# Set
-my_set = {1, 2, 3}
-my_set.add(4) # add orqali ozgaruvchi qoshish
-print(my_set)
+# Qiymatlarni qo'shish
+S = Student('Nandini', '19', '2541997')
+
+# iteratsiyani ishga tushirish
+li = ['Manjeet', '19', '411997']
+
+# ishga tushirish dict
+di = {'name': "Nikhil", 'age': 19, 'DOB': '1391997'}
+
+# OrderedDict() ni qaytarish uchun _asdict() dan foydalanish
+print("Nametuple yordamida OrderedDict misoli  : ",(S._asdict()))
+
+
+
+Person = namedtuple("Person", "name age email")
+c1 = ['Jane',25,'jane@gmail.com']
+c2 = ['Nasty',20,'nasty@gmail.com']
+jane = (Person._make(c1))
+print(jane.age)
+nasty = (Person._make(c2))
+print(nasty.name)
+
+
+
+
+import collections
+Student = collections.namedtuple('Student', ['name', 'age', 'student_id'])
+
+# O'zgaruvchilar qo'shish
+S = Student('Nandini', '19', '2541997')
+
+print("Talabalarga tegishli malumotlar  : ",(S._fields))
+
+
+
 
 
 
